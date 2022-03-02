@@ -1,14 +1,15 @@
 import Utility.DriverFactory;
+import Utility.PropertiesFile;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.Assert.assertEquals;
+
 
 
 public class TestDesafioUno {
-    private String URLMarket ="https://demoblaze.com/index.html";
+    private String URLMarket = PropertiesFile.getProperty("URLdemo");
     private WebDriver driver = DriverFactory.getWebDriverBrowser();
 
 
@@ -23,6 +24,7 @@ public class TestDesafioUno {
         String  priceProd = driver.findElement(By.cssSelector("h3[class='price-container']")).getText();
         System.out.println("El producto "+nameProd+" cuesta "+priceProd.substring(0,4));
         driver.findElement(By.cssSelector("a[class*='btn']")).click();
+        Thread.sleep(2000);
         String MsjPrompt = driver.switchTo().alert().getText();
         Assert.assertEquals("Product added",MsjPrompt);
 
