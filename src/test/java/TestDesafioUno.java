@@ -26,7 +26,7 @@ public class TestDesafioUno {
         String MsjPrompt = driver.switchTo().alert().getText();
         Assert.assertEquals("Product added",MsjPrompt);
 
-        /*driver.quit();*/
+        driver.quit();
     }
 
 
